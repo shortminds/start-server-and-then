@@ -1,0 +1,28 @@
+{
+  "name": "start-server-and-then",
+  "version": "1.0.0",
+  "description": "Start server and then do something",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf ./build && tsc",
+    "dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shortminds/start-server-and-then.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shortminds/start-server-and-then/issues"
+  },
+  "homepage": "https://github.com/shortminds/start-server-and-then#readme",
+  "devDependencies": {
+    "@types/node": "^12.12.17",
+    "nodemon": "^2.0.2",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3"
+  }
+}
