@@ -7,6 +7,7 @@
     "build": "rimraf ./build && tsc",
     "coverage": "nyc npm run test",
     "dev": "nodemon",
+    "lint": "tsc --noEmit && eslint '**/*.ts' --quiet",
     "test": "mocha -r ts-node/register -r source-map-support/register src/**/*.spec.ts"
   },
   "repository": {
@@ -25,7 +26,10 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.17",
     "@types/sinon": "^7.5.1",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
     "chai": "^4.2.0",
+    "eslint": "^6.7.2",
     "mocha": "^6.2.2",
     "nodemon": "^2.0.2",
     "nyc": "^14.1.1",

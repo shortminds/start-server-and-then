@@ -1,6 +1,6 @@
 import packageJsonScriptExists from './packageJsonScriptExists';
 import { expect } from 'chai';
-import sinon, { SinonStub } from 'sinon';
+import sinon from 'sinon';
 import logger from './logger';
 
 describe('Hello function', () => {
@@ -18,7 +18,7 @@ describe('Hello function', () => {
     packageJsonScriptExists('');
     expect(loggerStub.calledOnce).to.be.true;
     expect(loggerStub.calledWithExactly('found empty command string')).to.be.true;
-  })
+  });
 
   it('should find test script', () => {
     const testCommand = 'test';

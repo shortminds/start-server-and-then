@@ -6,13 +6,13 @@ const packageJsonScriptExists = (command: string): boolean => {
     logger.log('found empty command string');
   }
 
-  const packageFilename = join(process.cwd(), 'package.json')
-  const packageJson = require(packageFilename)
+  const packageFilename = join(process.cwd(), 'package.json');
+  const packageJson = require(packageFilename); //eslint-disable-line
   if (packageJson.scripts && packageJson.scripts[command]) {
-      return true;
+    return true;
   }
 
   return false;
-}
+};
 
 export default packageJsonScriptExists;
