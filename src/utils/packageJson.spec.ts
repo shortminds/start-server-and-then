@@ -1,9 +1,9 @@
-import packageJsonScriptExists from './packageJsonScriptExists';
+import { scriptExists } from './packageJson';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import logger from './logger';
 
-describe('Hello function', () => {
+describe('packageJsonScriptExists test', () => {
   let loggerStub: any;
 
   beforeEach(function() {
@@ -15,18 +15,18 @@ describe('Hello function', () => {
   });
 
   it('should console log when no command provided', () => {
-    packageJsonScriptExists('');
+    scriptExists('');
     expect(loggerStub.calledOnce).to.be.true;
     expect(loggerStub.calledWithExactly('found empty command string')).to.be.true;
   });
 
   it('should find test script', () => {
     const testCommand = 'test';
-    expect(packageJsonScriptExists(testCommand)).to.equal(true);
+    expect(scriptExists(testCommand)).to.equal(true);
   });
 
   it('should not find a script that doesn\'t exist', () => {
     const testCommand = 'notarealscript';
-    expect(packageJsonScriptExists(testCommand)).to.equal(false);
+    expect(scriptExists(testCommand)).to.equal(false);
   });
 });

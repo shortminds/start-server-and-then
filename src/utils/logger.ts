@@ -2,4 +2,8 @@ const log = (message: string): void => {
   console.log(message);
 };
 
-export default { log };
+const error = (error: Error): void => {
+  console.error(error);
+};
+
+export default { error, log };

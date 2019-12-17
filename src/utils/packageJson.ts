@@ -1,8 +1,8 @@
 import { join } from 'path';
 import logger from './logger';
 
-const packageJsonScriptExists = (command: string): boolean => {
-  if (!command.length) {
+const scriptExists = (command: string): boolean => {
+  if (typeof command !== 'string' || !command.length) {
     logger.log('found empty command string');
   }
 
@@ -15,4 +15,4 @@ const packageJsonScriptExists = (command: string): boolean => {
   return false;
 };
 
-export default packageJsonScriptExists;
+export { scriptExists };
