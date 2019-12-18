@@ -51,4 +51,4 @@ const getArguments = (cliArgs: string[]): Arguments => {
   };
 };
 
-export default getArguments;
+export { getArguments };

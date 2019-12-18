@@ -1,21 +1,25 @@
 import { scriptExists } from './packageJson';
 import { expect } from 'chai';
-import sinon from 'sinon';
+import sinon, { SinonSandbox } from 'sinon';
 import logger from './logger';
 
 describe('packageJsonScriptExists test', () => {
-  let loggerStub: any;
+  let sandbox: SinonSandbox;
+  let loggerStub;
 
   beforeEach(function() {
-    loggerStub = sinon.stub(logger, 'log');
+    sandbox = sinon.createSandbox();
   });
 
   afterEach(function() {
-    loggerStub.restore();
+    sandbox.restore();
   });
 
   it('should console log when no command provided', () => {
+    loggerStub = sinon.stub(logger, 'log');
+
     scriptExists('');
+
     expect(loggerStub.calledOnce).to.be.true;
     expect(loggerStub.calledWithExactly('found empty command string')).to.be.true;
   });

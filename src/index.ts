@@ -1,5 +1,5 @@
 import logger from './utils/logger';
-import getArguments from './utils/getArguments';
+import { getArguments } from './utils/getArguments';
 
 const args = process.argv.slice(2);
 const {

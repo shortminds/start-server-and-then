@@ -1,4 +1,4 @@
-import getArguments from './getArguments';
+import { getArguments } from './getArguments';
 import { expect } from 'chai';
 import sinon, { SinonSandbox } from 'sinon';
 import logger from './logger';
@@ -6,9 +6,9 @@ import * as packageJson from './packageJson';
 
 describe('getArguments test', () => {
   let sandbox: SinonSandbox;
-  let processStub: any;
-  let loggerLogStub: any;
-  let loggerErrorStub: any;
+  let processStub;
+  let loggerLogStub;
+  let loggerErrorStub;
 
   beforeEach(function() {
     sandbox = sinon.createSandbox();
