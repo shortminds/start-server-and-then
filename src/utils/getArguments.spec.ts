@@ -15,7 +15,6 @@ describe('getArguments test', () => {
   });
 
   afterEach(function() {
-    // processStub.restore();
     sandbox.restore();
   });
 

@@ -16,7 +16,7 @@ describe('packageJsonScriptExists test', () => {
   });
 
   it('should console log when no command provided', () => {
-    loggerStub = sinon.stub(logger, 'log');
+    loggerStub = sandbox.stub(logger, 'log');
 
     scriptExists('');
 

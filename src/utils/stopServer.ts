@@ -1,23 +1,28 @@
 import logger from './logger';
 import psTree, { PS } from 'ps-tree';
 
+let resolveHolder: any;
+
+const psTreeCallback = (error: Error, children: readonly PS[]): void => {
+  children.forEach((child: PS) => {
+    try {
+      process.kill(parseInt(child.PID, 10), 'SIGINT');
+    } catch (e) {
+      if (e.code === 'ESRCH') {
+        logger.log(`Child process ${child.PID} exited before trying to stop it`);
+      } else {
+        throw e;
+      }
+    }
+  });
+  resolveHolder();
+};
+
 // TODO: remove any for server?
-const stopServer = (server: any): void => {
-  new Promise((resolve) => {
-    return psTree(server.pid, (error, children) => {
-      children.forEach((child: PS) => {
-        try {
-          process.kill(parseInt(child.PID, 10), 'SIGINT');
-        } catch (e) {
-          if (e.code === 'ESRCH') {
-            logger.log(`Child process ${child.PID} exited before trying to stop it`);
-          } else {
-            throw e;
-          }
-        }
-      });
-      resolve();
-    });
+const stopServer = (server: any): Promise<void> => {
+  return new Promise((resolve) => {
+    resolveHolder = resolve;
+    psTree(server.pid, psTreeCallback);
   }).then(() => {
     server.kill('SIGTERM', {
       forceKillAfterTimeout: 2000
@@ -25,4 +30,4 @@ const stopServer = (server: any): void => {
   });
 };
 
-export { stopServer };
+export { psTreeCallback, stopServer };
