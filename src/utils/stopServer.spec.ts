@@ -65,9 +65,12 @@ describe('stopServer test', () => {
     expect(loggerLogStub.calledOnce).to.be.true;
   });
 
-  // it('should handle other kill errors', () => {
-  //   processStub = sandbox.stub(process, 'kill').throws(new PSError('error', 'FAIL'));
+  it('should handle other kill errors', () => {
+    processStub = sandbox.stub(process, 'kill').throws(new PSError('error', 'FAIL'));
+    loggerLogStub = sandbox.stub(logger, 'error');
 
-  //   expect(psTreeCallback(new Error(), [{ PID: '123', COMMAND: '', PPID: '', STAT: '' }])).to.throw;
-  // });
+    expect(psTreeCallback(new Error(), [{ PID: '123', COMMAND: '', PPID: '', STAT: '' }])).to.throw;
+
+    expect(loggerLogStub.calledOnce).to.be.true;
+  });
 });

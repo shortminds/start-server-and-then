@@ -11,7 +11,7 @@ const psTreeCallback = (error: Error, children: readonly PS[]): void => {
       if (e.code === 'ESRCH') {
         logger.log(`Child process ${child.PID} exited before trying to stop it`);
       } else {
-        throw e;
+        logger.error(e);
       }
     }
   });
