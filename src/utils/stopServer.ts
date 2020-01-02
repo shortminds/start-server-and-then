@@ -1,5 +1,6 @@
 import logger from './logger';
 import psTree, { PS } from 'ps-tree';
+import { ExecaChildProcess } from 'execa';
 
 let resolveHolder: any;
 
@@ -19,7 +20,7 @@ const psTreeCallback = (error: Error, children: readonly PS[]): void => {
 };
 
 // TODO: remove any for server?
-const stopServer = (server: any): Promise<void> => {
+const stopServer = (server: ExecaChildProcess): Promise<void> => {
   return new Promise((resolve) => {
     resolveHolder = resolve;
     psTree(server.pid, psTreeCallback);

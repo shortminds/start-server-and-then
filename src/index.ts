@@ -19,9 +19,9 @@ const startServerAndThen = (): void => {
   logger.log(`running these scripts "${andThen}"`);
 
   // TODO: remove this
-  const sp = execa('npm run tmp', { shell: true, stdio: 'inherit' });
-  sp && sp.stdout && sp.stdout.pipe(process.stdout);
-  stopServer(sp);
+  const server = execa(start, { shell: true, stdio: 'inherit' });
+  // sp && sp.stdout && sp.stdout.pipe(process.stdout);
+  stopServer(server);
 };
 
 // TODO: remove this

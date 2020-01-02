@@ -32,6 +32,7 @@ describe('stopServer test', () => {
   });
 
   it('should kill the server', () => {
+    // @ts-ignore
     stopServer(server).then(() => {
       expect(server.kill.callCount).to.equal(1);
     });
