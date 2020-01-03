@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Start server and then do something",
   "main": "build/index.js",
+  "bin": {
+    "start-server-and-then": "build/index.js"
+  },
   "scripts": {
     "build": "rimraf ./build && tsc",
     "coverage": "nyc npm run test",

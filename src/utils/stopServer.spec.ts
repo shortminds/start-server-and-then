@@ -14,7 +14,6 @@ class PSError extends Error {
 
 describe('stopServer test', () => {
   let sandbox: SinonSandbox;
-  // let psTreeStub: any;
   let processStub;
   let loggerLogStub;
 
