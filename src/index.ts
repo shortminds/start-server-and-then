@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import execa, { ExecaChildProcess } from 'execa';
 import logger from './utils/logger';
 import { getArguments } from './utils/getArguments';
@@ -30,12 +32,15 @@ const startServerAndThen = (): Promise<void> => {
 
   return waited
     .then(() => { doAndThens(andThen); })
-    .finally(() => { stopServer(server); });
+    .finally(() => { stopServer(server); })
+    .catch(error => {
+      logger.error(error);
+      process.exit(1);
+    });
 
   // stopServer(server);
 };
 
-// TODO: remove this
 startServerAndThen();
 
-export default startServerAndThen;
+// export default startServerAndThen;
